@@ -111,7 +111,7 @@ function App() {
   };
 
   const getZeldaResponse = async(prompt) => {
-
+    
     await openai.createCompletion({
       model: "text-davinci-003",
       max_tokens: 1000,
@@ -241,7 +241,8 @@ function App() {
       {
         // addToConversation("User", transcript);
         // getZeldaResponse(transcript);
-        const fixedMessage = await fixPunctuation(message);
+        // const fixedMessage = await fixPunctuation(message);
+        const fixedMessage = message;
         addToConversation("User", fixedMessage);
         getZeldaResponse(fixedMessage);
         setGeneratingResponse(true);
