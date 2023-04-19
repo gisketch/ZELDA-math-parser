@@ -54,6 +54,8 @@ function App() {
   const [fromHistory, setFromHistory] = useState(false);
   const [currentResponse, setCurrentResponse] = useState('');
 
+  const [isInternetFast, setIsInternetFast] = useState(false);
+
   const [appState, setAppState] = useState(0);
 
   // SPEECH RECOGNITION VARIABLES
@@ -197,7 +199,15 @@ function App() {
     // add Zelda to conversation
     // speak the text
     setZeldaState(2);
-    Polly(zeldaText, () => {setZeldaState(0)});
+    if(isInternetFast)
+    {
+      Polly(zeldaText, () => {setZeldaState(0)});
+    } else
+    {
+      //add a delay of 2 seconds
+      setTimeout(() => {setZeldaState(0)}, 2000);
+    }
+      
   }
 
 
